@@ -11,6 +11,11 @@ const getPembeliByEmail = async (email) => {
   return conn.execute(QUERY, [email]);
 };
 
+const getUserByID = async (id) => {
+  const QUERY = "SELECT * FROM pembeli WHERE id = ?";
+  return conn.execute(QUERY, [id]);
+};
+
 const addPembeli = async (
   first_name,
   last_name,
@@ -36,5 +41,6 @@ const addPembeli = async (
 module.exports = {
   getAllPembeli,
   getPembeliByEmail,
+  getUserByID,
   addPembeli,
 };
