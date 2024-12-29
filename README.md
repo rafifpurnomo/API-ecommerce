@@ -1,6 +1,6 @@
 # E-Commerce API Documentation
 
-![Express Logo](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png)
+[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
 
 ## Introduction
 This API is built for an e-commerce platform, allowing users to manage their accounts, products, and transactions. It supports roles such as **Pembeli**, **Penjual**, and **Admin** with distinct permissions.
@@ -12,7 +12,7 @@ This API is built for an e-commerce platform, allowing users to manage their acc
 
 ## Database Structure
 
-![Entity Relationship Diagram](https://raw.githubusercontent.com/rafifpurnomo/API-ecommerce/dev/src/docs/ERD.png)
+![Entity Relationship Diagram](https://raw.githubusercontent.com/rafifpurnomo/API-ecommerce/main/src/docs/ERD.png)
 The database consists of the following tables:
 
 1. **pembeli**: Stores buyer information.
@@ -23,12 +23,6 @@ The database consists of the following tables:
 6. **checkout**: Handles the checkout process.
 7. **kategori**: Categorizes products.
 8. **metode_pembayaran**: Lists payment methods.
-
-Refer to the [SQL schema](#database-schema) for more details.
-
----
-
-
 
 ---
 
