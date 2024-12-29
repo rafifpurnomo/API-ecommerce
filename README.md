@@ -2,24 +2,6 @@
 
 ![Express Logo](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png)
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Database Structure](#database-structure)
-3. [API Endpoints](#api-endpoints)
-    - [Pembeli Endpoints](#pembeli-endpoints)
-    - [Penjual Endpoints](#penjual-endpoints)
-    - [Admin Endpoints](#admin-endpoints)
-    - [Produk Endpoints](#produk-endpoints)
-    - [Keranjang Endpoints](#keranjang-endpoints)
-    - [Checkout Endpoints](#checkout-endpoints)
-    - [Kategori Endpoints](#kategori-endpoints)
-    - [Metode Pembayaran Endpoints](#metode-pembayaran-endpoints)
-4. [Error Handling](#error-handling)
-5. [License](#license)
-
----
-
 ## Introduction
 This API is built for an e-commerce platform, allowing users to manage their accounts, products, and transactions. It supports roles such as **Pembeli**, **Penjual**, and **Admin** with distinct permissions.
 
@@ -30,6 +12,7 @@ This API is built for an e-commerce platform, allowing users to manage their acc
 
 ## Database Structure
 
+![Entity Relationship Diagram](https://raw.githubusercontent.com/rafifpurnomo/API-ecommerce/dev/src/docs/ERD.png)
 The database consists of the following tables:
 
 1. **pembeli**: Stores buyer information.
