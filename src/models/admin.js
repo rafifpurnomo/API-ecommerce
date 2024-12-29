@@ -2,22 +2,21 @@ const conn = require("../config/db_config");
 const bcrypt = require("bcrypt");
 
 const getAlladmin = () => {
-    const QUERY = "SELECT * FROM admin";
-    return conn.execute(QUERY);
-}
+  const QUERY = "SELECT * FROM admin";
+  return conn.execute(QUERY);
+};
 
 const getadminByEmail = (email) => {
-    const QUERY = "SELECT * FROM admin WHERE email = ?";
-    return conn.execute(QUERY, [email]);
-}
+  const QUERY = "SELECT * FROM admin WHERE email = ?";
+  return conn.execute(QUERY, [email]);
+};
 
-const addAdmin = async (
-  first_name,
-  last_name,
-  email,
-  password,
-  no_telpon
-) => {
+const getUserByID = async (id) => {
+  const QUERY = "SELECT * FROM admin WHERE id = ?";
+  return conn.execute(QUERY, [id]);
+};
+
+const addAdmin = async (first_name, last_name, email, password, no_telpon) => {
   const saltRounds = 10;
   const role = "admin";
   const hashedPass = await bcrypt.hash(password, saltRounds);
@@ -34,7 +33,8 @@ const addAdmin = async (
 };
 
 module.exports = {
-    getAlladmin,
-    getadminByEmail,
-    addAdmin,
-}
+  getAlladmin,
+  getadminByEmail,
+  getUserByID,
+  addAdmin,
+};

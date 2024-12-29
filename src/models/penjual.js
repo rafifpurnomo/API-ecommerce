@@ -11,6 +11,11 @@ const getPenjualByEmail = (email) => {
   return conn.execute(QUERY, [email]);
 };
 
+const getUserByID = async (id) => {
+  const QUERY = "SELECT * FROM penjual WHERE id = ?";
+  return conn.execute(QUERY, [id]);
+};
+
 const addPenjual = async (nama_toko, alamat, email, password, no_telpon) => {
   const saltRounds = 10;
   const hashPass = await bcrypt.hash(password, saltRounds);
@@ -30,5 +35,6 @@ const addPenjual = async (nama_toko, alamat, email, password, no_telpon) => {
 module.exports = {
   getAllPenjual,
   getPenjualByEmail,
+  getUserByID,
   addPenjual,
 };
