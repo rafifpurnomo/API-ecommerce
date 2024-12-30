@@ -9,6 +9,8 @@ const pembeliRoute = require("./routes/pembeli.routes");
 const penjualRoute = require("./routes/penjual.routes");
 const adminRoute = require("./routes/admin.routes");
 const produkRoute = require("./routes/produk.routes");
+const keranjangRoute = require("./routes/keranjang.routes");
+
 
 
 app.use(cors());
@@ -18,6 +20,7 @@ app.use("/pembeli-api", pembeliRoute);
 app.use("/penjual-api", penjualRoute);
 app.use("/admin-api", adminRoute);
 app.use("/produk-api", produkRoute);
+app.use("/keranjang-api", keranjangRoute);
 
 
 app.listen(PORT, () => {
