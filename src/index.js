@@ -10,8 +10,7 @@ const penjualRoute = require("./routes/penjual.routes");
 const adminRoute = require("./routes/admin.routes");
 const produkRoute = require("./routes/produk.routes");
 const keranjangRoute = require("./routes/keranjang.routes");
-
-
+const checkoutRoute = require("./routes/checkout.routes");
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +20,8 @@ app.use("/penjual-api", penjualRoute);
 app.use("/admin-api", adminRoute);
 app.use("/produk-api", produkRoute);
 app.use("/keranjang-api", keranjangRoute);
+app.use("/checkout-api", checkoutRoute);
+
 
 
 app.listen(PORT, () => {

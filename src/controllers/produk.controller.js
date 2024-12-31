@@ -107,9 +107,27 @@ const deleteProduk = async (req, res) => {
   }
 };
 
+const updateStokProduk = async (req, res) => {
+  const { id } = req.params;
+  const { stok } = req.body;
+
+  try {
+    await modelProduk.updateStokProduk(stok, id);
+    res.json({
+      message: "Berhasil mengedit stok produk",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Terjadi kesalahan server",
+      serverMessage: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllProduk,
   getAllProdukByIdPenjual,
   addProduk,
   deleteProduk,
+  updateStokProduk,
 };

@@ -89,10 +89,16 @@ const deleteProduk = (id) => {
   return conn.execute(QUERY, [id]);
 };
 
+const updateStokProduk = (stok, id) => {
+  const QUERY = "UPDATE produk SET jumlah_stok = ? WHERE id = ? ";
+  return conn.execute(QUERY, [stok, id])
+}
+
 module.exports = {
   getAllProduk,
   getAllProdukByIdPenjual,
   getProdukByID,
   addProduk,
   deleteProduk,
+  updateStokProduk,
 };
