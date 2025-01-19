@@ -1,6 +1,7 @@
 const conn = require("../config/db_config");
 
 const addCheckout = (
+  id,
   idpembeli,
   idproduk,
   idmetodepembayaran,
@@ -9,8 +10,9 @@ const addCheckout = (
   Status
 ) => {
   const QUERY =
-    "INSERT INTO checkout (id_pembeli, id_produk, id_metode_pembayaran, total_produk, total_harga, status, created_at) VALUES (?,?,?,?,?,?, NOW())";
+    "INSERT INTO checkout (id, id_pembeli, id_produk, id_metode_pembayaran, total_produk, total_harga, status, created_at) VALUES (?, ?,?,?,?,?,?, NOW())";
   return conn.execute(QUERY, [
+    id,
     idpembeli,
     idproduk,
     idmetodepembayaran,
