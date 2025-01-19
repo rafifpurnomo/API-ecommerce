@@ -1,4 +1,13 @@
 const modelProduk = require("../models/produk");
+const {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} = require("firebase/storage");
+const firebaseConfig = require("../config/firebase.config");
+const path = require("path");
 
 const getAllProduk = async (req, res) => {
   try {
@@ -53,12 +62,14 @@ const addProduk = async (req, res) => {
     if (req.file) {
       foto_produk = req.file;
     } else {
-      foto_produk = null;
+      return res.status(404).json({
+        message: "Harap mengupload foto produk",
+      });
     }
-
+    const imgPath = await uploadProductIMG(foto_produk);
     const data = {
       id_penjual,
-      foto_produk,
+      imgPath,
       nama_barang,
       jumlah_stok,
       harga_barang,
@@ -66,7 +77,7 @@ const addProduk = async (req, res) => {
     };
     await modelProduk.addProduk(
       data.id_penjual,
-      data.foto_produk,
+      data.imgPath,
       data.nama_barang,
       data.jumlah_stok,
       data.harga_barang,
@@ -81,6 +92,38 @@ const addProduk = async (req, res) => {
       message: "serve error",
       serverMessage: error,
     });
+  }
+};
+
+const uploadProductIMG = async (productIMG) => {
+  try {
+    if (!productIMG) {
+      throw new Error("File tidak valid");
+    }
+
+    const productIMGExtension = path.extname(productIMG.originalname);
+    const productIMGOriginalName = path.basename(
+      productIMG.originalname,
+      productIMGExtension
+    );
+    const newproductIMGName = `${Date.now()}_${productIMGOriginalName}${productIMGExtension}`;
+
+    const { firebaseStorage } = await firebaseConfig();
+    const storageRef = ref(
+      firebaseStorage,
+      `e-commerce-api/product-img/${newproductIMGName}`
+    );
+
+    const productIMGBuffer = productIMG.buffer;
+
+    const resultProductIMG = await uploadBytes(storageRef, productIMGBuffer, {
+      contentType: productIMG.mimetype,
+    });
+
+    return await getDownloadURL(resultProductIMG.ref);
+  } catch (error) {
+    console.error("Error saat mengunggah gambar produk:", error.message);
+    throw new Error("Gagal mengunggah gambar produk.");
   }
 };
 

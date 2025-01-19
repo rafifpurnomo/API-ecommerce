@@ -12,7 +12,7 @@ This API is built for an e-commerce platform, allowing users to manage their acc
 
 ## Database Structure
 
-![Entity Relationship Diagram](https://raw.githubusercontent.com/rafifpurnomo/API-ecommerce/main/src/docs/ERD.png)
+![Entity Relationship Diagram](https://raw.githubusercontent.com/rafifpurnomo/API-ecommerce/main/src/docs/ERD-Images.png)
 The database consists of the following tables:
 
 1. **pembeli**: Stores buyer information.
