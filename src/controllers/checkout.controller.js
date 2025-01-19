@@ -1,6 +1,7 @@
 const modelCheckout = require("../models/checkout");
 const produkController = require("../controllers/produk.controller");
 const produkModel = require("../models/produk");
+const { v4: uuidv4 } = require('uuid');
 
 const addCheckout = async (req, res) => {
   const { idmetodepembayaran, totalproduk, totalharga } = req.body;
@@ -9,7 +10,9 @@ const addCheckout = async (req, res) => {
   const status = "belum bayar";
 
   try {
+    const id = await uuidv4();
     const data = {
+      id,
       idpembeli,
       idproduk,
       idmetodepembayaran,
@@ -23,6 +26,7 @@ const addCheckout = async (req, res) => {
       const stokTerkini = jumlahStok - data.totalproduk;
       await produkModel.updateStokProduk(stokTerkini, data.idproduk);
       await modelCheckout.addCheckout(
+        data.id,
         data.idpembeli,
         data.idproduk,
         data.idmetodepembayaran,
